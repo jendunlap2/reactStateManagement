@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
-import ClassList from './components/ClassList'
+import ClassList from './views/ClassList';
+import { Routes, Route } from 'react-router-dom';
+import Home from './views/Home'
 
 export default class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      count:0
-    }
-  }
-
-  incrementTotalCount = () => {
-    console.log('The button has been clicked')
-    const newCount = this.state.count
-    this.setState({
-      count: newCount
-    })
-  }
 
   render() {
     return (
       <>
         <Navbar />
           <div className='container'>
-            <ClassList />
+            <Routes>  
+              <Route path="/" element={<Home />} />
+              <Route path="/classlist" element={<ClassList />} />
+            </Routes>
+
           </div>
       </>
     );
